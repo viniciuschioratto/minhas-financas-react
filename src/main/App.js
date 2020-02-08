@@ -5,6 +5,8 @@ import React from 'react';
 
 import Rotas from './rotas'
 
+import Navbar from '../components/navbar'
+
 //Inclusão do CSS
 import '../custom.css'
 
@@ -15,9 +17,12 @@ import 'bootswatch/dist/flatly/bootstrap.css'
 class App extends React.Component{
   render(){
     return(
-      <div>
-        <Rotas></Rotas>
-      </div>
+      <>
+        <Navbar></Navbar>
+        <div className="container">
+          <Rotas></Rotas>
+        </div>
+      </>
     )
   }
 }
