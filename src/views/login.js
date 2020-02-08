@@ -2,23 +2,32 @@ import React from 'react'
 import Card from '../components/card'
 import FormGroup from '../components/form-group'
 import {withRouter} from 'react-router-dom'
-import axios from 'axios'
+import UsuarioService from '../app/service/usuarioService'
+import LocalStorageService from '../app/service/localstorageService'
 
 class Login extends React.Component{
 
     state = {
         email:'',
-        senha:''
+        senha:'',
+        msgErro: null
+    }
+    constructor(){
+        super();
+        this.service = new UsuarioService();
     }
 
     entrar = () => {
-        axios.post('http://localhost:8080/api/usuarios/autenticar', {
+        this.service.autenticar({
             email: this.state.email,
             senha: this.state.senha
         }).then( response => {
-            console.log(response)
+            //O localStorage isso guardar o usuario somente no front-end, se fizer o armazenamento em Cookie é possível recuperar esse usuario na API
+            //localStorage.setItem('_usuario_logado', JSON.stringify(response.data))
+            LocalStorageService.adicionarItem('_usuario_logado', response.data)
+            this.props.history.push('/home')
         }).catch( erro => {
-            console.log(erro.response)
+            this.setState({msgErro: erro.response.data})
         })
     }
 
@@ -32,6 +41,9 @@ class Login extends React.Component{
                 <div className="col-md-6" style={{position: 'relative', left: '300px'}}>
                     <div className="bs=docs-section">
                         <Card title="Login">
+                            <div className="row">
+                                <span>{this.state.msgErro}</span>
+                            </div>
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="bs-component">
