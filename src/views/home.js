@@ -11,7 +11,7 @@ class Home extends React.Component{
         super();
         this.usuarioService = new UsuarioService();
     }
-    //Componente de ciclo de vida do React, ele é executado antes da renderização 
+    //Componente de ciclo de vida do React, o método componentDidMount() é executado depois que a saída do componente é renderizada no DOM 
     componentDidMount(){
         //const usuarioLogadoString = localStorage.getItem('_usuario_logado')
         const usuarioLogadoObject = LocalStorageService.obterItem('_usuario_logado')
@@ -39,7 +39,7 @@ class Home extends React.Component{
                 Cadastrar Usuário
                 </a>
                 <a className="btn btn-danger btn-lg" 
-                href="https://bootswatch.com/flatly/#"
+                href="#/cadastro-lancamentos"
                  role="button"><i className="fa fa-users"></i>  
                  Cadastrar Lançamento
                  </a>
