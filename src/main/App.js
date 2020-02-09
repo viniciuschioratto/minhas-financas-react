@@ -2,6 +2,7 @@ import React from 'react';
 //Inclusão de um componente
 //import Login from '../views/login'
 //import CadastroUsuario from '../views/cadastroUsuario';
+import ProvedorAutenticacao from './provedorAutenticacao'
 
 import Rotas from './rotas'
 import Navbar from '../components/navbar'
@@ -27,10 +28,12 @@ class App extends React.Component{
   render(){
     return(
       <>
-        <Navbar></Navbar>
-        <div className="container">
-          <Rotas></Rotas>
-        </div>
+        <ProvedorAutenticacao>
+          <Navbar></Navbar>
+          <div className="container">
+            <Rotas></Rotas>
+          </div>
+        </ProvedorAutenticacao>
       </>
     )
   }

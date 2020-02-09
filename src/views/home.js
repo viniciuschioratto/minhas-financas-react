@@ -1,6 +1,7 @@
 import React from 'react'
 import UsuarioService from '../app/service/usuarioService'
 import LocalStorageService from '../app/service/localstorageService'
+import { AuthContext } from '../main/provedorAutenticacao'
 
 class Home extends React.Component{
     state = {
@@ -14,7 +15,8 @@ class Home extends React.Component{
     //Componente de ciclo de vida do React, o método componentDidMount() é executado depois que a saída do componente é renderizada no DOM 
     componentDidMount(){
         //const usuarioLogadoString = localStorage.getItem('_usuario_logado')
-        const usuarioLogadoObject = LocalStorageService.obterItem('_usuario_logado')
+        //const usuarioLogadoObject = LocalStorageService.obterItem('_usuario_logado')
+        const usuarioLogadoObject = this.context.usuarioAutenticado
         //Utilizar `` para inserir o valor de algum objeto
         //axios.get(`http://localhost:8080/api/usuarios/${usuarioLogadoObject.id}/saldo`)
         this.usuarioService.obterSaldoPorUsuario(usuarioLogadoObject.id)    
@@ -35,12 +37,12 @@ class Home extends React.Component{
                 <p className="lead">
                 <a className="btn btn-primary btn-lg" 
                 href="#/cadastro-usuario" 
-                role="button"><i className="fa fa-users"></i>  
+                role="button"><i className="pi pi-users"></i>  
                 Cadastrar Usuário
                 </a>
                 <a className="btn btn-danger btn-lg" 
                 href="#/cadastro-lancamentos"
-                 role="button"><i className="fa fa-users"></i>  
+                 role="button"><i className="pi pi-money-bill"></i>  
                  Cadastrar Lançamento
                  </a>
                 </p>
@@ -49,5 +51,6 @@ class Home extends React.Component{
     }
 }
 
+Home.contextType = AuthContext
 
 export default Home
