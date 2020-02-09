@@ -4,6 +4,7 @@ import Login from '../views/login'
 import CadastroUsuario from '../views/cadastroUsuario'
 import Home from '../views/home'
 import ConsultaLancamentos from '../views/lancamentos/consulta-lancamentos'
+import CadastroLancamentos from '../views/lancamentos/cadastro-lancamentos'
 
 // {} significa uma desentruturação
 import { Route, Switch, HashRouter } from 'react-router-dom'
@@ -16,6 +17,7 @@ function Rotas(){
                 <Route path="/login" component={Login}></Route>
                 <Route path="/cadastro-usuario" component={CadastroUsuario}></Route>
                 <Route path="/consulta-lancamentos" component={ConsultaLancamentos}></Route>
+                <Route path="/cadastro-lancamentos" component={CadastroLancamentos}></Route>
             </Switch>
         </HashRouter>
     )

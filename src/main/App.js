@@ -17,6 +17,12 @@ import 'bootswatch/dist/flatly/bootstrap.css'
 //Inclusão CSS do Toast
 import 'toastr/build/toastr.css'
 
+//Inclusão CSS do PrimeReact
+import 'primereact/resources/themes/nova-light/theme.css'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
+
+
 class App extends React.Component{
   render(){
     return(
